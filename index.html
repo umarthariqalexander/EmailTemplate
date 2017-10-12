@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <script type="text/javascript">
+      var pageHeader = "Page Header";
+    </script>
+    <style media="screen">
+      body{
+        background-color: #f2f2f2;
+        font-family: Helvetica;
+        color: #999999;
+      }
+      .bold-font{
+        font-weight: bold;
+      }
+      .black-font{
+        color: #202020;
+      }
+      .orange-font{
+        color: #f7931e;
+      }
+      .bold{
+        font-weight: bold;
+      }
+      .m-5{
+        margin: 5px;
+      }
+      .m-10{
+        margin: 10px;
+      }
+      .m-15{
+        margin: 15px;
+      }
+      .m-20{
+        margin: 20px;
+      }
+      .m-25{
+        margin: 25px;
+      }
+      .m-30{
+        margin: 30px;
+      }
+      .p-5{
+        padding: 5px;
+      }
+      .p-10{
+        padding: 10px;
+      }
+      .p-15{
+        padding: 15px;
+      }
+      .p-20{
+        padding: 20px;
+      }
+      .p-25{
+        padding: 25px;
+      }
+      .p-30{
+        padding: 30px;
+      }
+      .m-b-10{
+        margin-bottom: 10px;
+      }
+      .m-b-15{
+        margin-bottom: 15px;
+      }
+      .m-b-20{
+        margin-bottom: 20px;
+      }
+      .m-b-25{
+        margin-bottom: 25px;
+      }
+      .m-b-30{
+        margin-bottom: 30px;
+      }
+      .p-b-10{
+        padding-bottom: 10px;
+      }
+      .p-b-15{
+        padding-bottom: 15px;
+      }
+      .p-b-20{
+        padding-bottom: 20px;
+      }
+      .p-b-25{
+        padding-bottom: 25px;
+      }
+      .p-b-30{
+        padding-bottom: 30px;
+      }
+      .main-outer-div{
+        margin-top: 40px;
+        margin-bottom: 10px;
+        margin-left: 40px;
+        margin-right: 40px;
+        background-color: #ffffff;
+      }
+      .secondary-outer-div{
+        padding: 40px;
+      }
+      .blibli-img-container{
+
+      }
+      .page-header-text{
+        font-weight: 200;
+      }
+      .header-desc{
+        color: #656565;
+        margin-bottom:30px;
+      }
+      .info-box{
+        background-color: #f2f2f2;
+        padding: 20px;
+        margin-bottom: 30px;
+      }
+      a{
+        color: #0096d9;
+      }
+      .table-info .key{
+          font-weight: bold;
+          margin-bottom: 10px;
+      }
+      .table-info{
+        margin-bottom: 30px;
+      }
+      .table-info .value{
+          color: #999999;
+          margin-bottom: 10px;
+      }
+      .table-info .first-row {
+          display: flex;
+          margin-bottom: 20px;
+      }
+      .table-info .first-row .no-of-order{
+          flex: 1;
+      }
+      .table-info .first-row .transaction-date{
+          flex: 1;
+      }
+      .table-info .second-row {
+          display: flex;
+      }
+      .table-info .second-row .payment-method{
+          flex: 1;
+      }
+      .table-info .second-row .payment-status{
+          flex: 1;
+      }
+      .order-summary-box{
+        margin-bottom: 30px;
+        color: #999999;
+      }
+      .order-summary-box .order-summary-title{
+        font-weight: bold;
+        font-size: 17px;
+        border-bottom: 2px solid #eee;
+        padding-bottom: 15px;
+      }
+      .order-summary-box .each-row{
+        display: flex;
+        padding: 15px 0px;
+        border-bottom: 2px solid #eee;
+      }
+      .order-summary-box .each-row .product-info{
+        flex: 8;
+      }
+      .order-summary-box .each-row .empty{
+        flex: 4;
+      }
+      .order-summary-box .each-row .rp{
+        flex: 1;
+      }
+      .order-summary-box .each-row .price{
+        flex: 1;
+        text-align: right;
+        margin-right: 15px;
+      }
+      .border-black{
+        border-bottom: 2px solid #000 !important;
+      }
+      .bottom-page-div{
+        padding: 20px 40px;
+        background-color: #ddd;
+        margin-bottom: 40px;
+        margin-left: 40px;
+        margin-right: 40px;
+      }
+      .bottom-page-div .customer-care-block{
+        border-bottom: 2px solid #ccc;
+        padding-bottom: 10px;
+      }
+      .bottom-page-div .do-not-reply-block{
+        border-bottom: 2px solid #ccc;
+        padding: 10px 0px;
+        margin-bottom: 30px;
+      }
+      .cicilan-gratis-customc-icon-div{
+        display: flex;
+        margin-bottom: 30px;
+      }
+      .cicilan-gratis-customc-icon-div div{
+        flex: 1;
+      }
+      .cicilan-gratis-customc-icon-div div img{
+        vertical-align: bottom;
+      }
+      .cicilan-gratis-customc-icon-div span{
+        font-size: 20px;
+        color: #202020;
+        margin-left: 10px;
+      }
+      .download-android-apple{
+        display: flex;
+      }
+      .download-android-apple .app-stores-block{
+        flex: 3;
+      }
+      .download-android-apple .social-links-block{
+        flex: 2;
+      }
+      .app-stores-block .links-to-store {
+        display: flex;
+      }
+      .app-stores-block .links-to-store .apple{
+        flex: 1;
+        margin-right:20px;
+      }
+      .app-stores-block .links-to-store .apple img{
+        width: 200px;
+      }
+      .app-stores-block .links-to-store .android{
+        flex:4;
+      }
+      .app-stores-block .links-to-store .android img{
+        width: 180px;
+        height: 60px;
+      }
+      .copy-right-block{
+        margin: 40px;
+        display: flex;
+      }
+      .copy-right-block .copy-right-text{
+        flex: 1;
+      }
+      .copy-right-block .external-links{
+        flex: 1;
+        text-align: right;
+      }
+      .copy-right-block .external-links a:first-child{
+        border-right: 3px solid #ccc;
+        padding-right: 5px;
+      }
+      .copy-right-block .external-links a:nth-child(2){
+        border-right: 3px solid #ccc;
+        padding-right: 5px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="main-outer-div">
+      <div class="secondary-outer-div">
+        <div class="blibli-img-container">
+            <img src="https://www.static-src.com/resources/images/logo-blibli.png" alt="">
+        </div>
+
+        <!-- Header Part  -->
+        <div class="page-header">
+          <h1 class="page-header-text black-font">Konfirmasi Pembelian</h1>
+        </div>
+        <div class="header-desc">
+          <p class="header-desc-text">Silakan melakukan pembayaran untuk menghindari pembatalan transaksi secara otomatis.</p>
+        </div>
+
+        <!-- Info Box  -->
+        <div class="info-box">
+          <p>Status pesanan dapat dilihat di <a href="#" target='_blank'>Pesanan Saya</a></p>
+        </div>
+
+        <!-- Table Info -->
+        <div class="table-info">
+          <div class="first-row">
+            <div class="no-of-order">
+              <div class="key black-font">
+                No. Pesanan
+              </div>
+              <div class="value">
+                1234567890
+              </div>
+            </div>
+            <div class="transaction-date">
+              <div class="key black-font">
+                Tanggal Transaksi
+              </div>
+              <div class="value">
+                 21-Jun-2017 05:59
+              </div>
+            </div>
+          </div>
+          <div class="second-row">
+            <div class="payment-method">
+              <div class="key black-font">
+                Metode Pembayaran
+              </div>
+              <div class="value">
+                BCA Oneklik
+              </div>
+            </div>
+            <div class="payment-status">
+              <div class="key black-font">
+                Status Pembayaran
+              </div>
+              <div class="value">
+                Pembayaran Berhasil
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="order-summary-box">
+          <div class="order-summary-title black-font">
+              Ringkasan Pemesanan
+          </div>
+          <div class="each-row">
+              <div class="product-info">
+                <div class="product-title bold m-b-15 black-font">
+                  Pulsa Telkomsel Rp 50,000
+                </div>
+                <div class="product-desc">
+                  Nomor tujuan 0823 1833 0555
+                  Masa Aktif 30 hari
+                </div>
+              </div>
+              <div class="empty">
+
+              </div>
+              <div class="rp">
+                  Rp
+              </div>
+              <div class="price">
+                  50,000
+              </div>
+          </div>
+          <div class="each-row">
+              <div class="product-info">
+              </div>
+              <div class="empty">
+                  Subtotal
+              </div>
+              <div class="rp">
+                  Rp
+              </div>
+              <div class="price">
+                  50,000
+              </div>
+          </div>
+          <div class="each-row">
+              <div class="product-info">
+              </div>
+              <div class="empty">
+                  Voucher & Promo lainnya
+              </div>
+              <div class="rp">
+                  Rp
+              </div>
+              <div class="price">
+                  2,500
+              </div>
+          </div>
+          <div class="each-row border-black">
+              <div class="product-info">
+              </div>
+              <div class="empty black-font bold-font">
+                  Total Pembayaran
+              </div>
+              <div class="rp orange-font">
+                  Rp
+              </div>
+              <div class="price orange-font">
+                  47,500
+              </div>
+          </div>
+        </div>
+        <div class="warm-greetings m-b-15">
+          Salam Hangat
+        </div>
+        <div class="Blibli-sign">
+          Blibli.com
+        </div>
+      </div>
+    </div>
+    <div class="bottom-page-div">
+      <div class="customer-care-block">
+        <p>Jikalau ada keluhan atau pertanyaan silahkan menghubungi Customer Service 24 jam kami di
+        <span class="bold-font black-font">0804 1 871 871</span> atau email ke : <a href="#" target='_blank'>customer.care@blibli.com</a></p>
+      </div>
+      <div class="do-not-reply-block">
+        <p>Email ini dibuat secara otomatis. Mohon tidak mengirimkan balasan ke email ini.</p>
+      </div>
+      <div class="cicilan-gratis-customc-icon-div">
+          <div class="cicilan">
+            <img src="https://www.static-src.com/resources/images/mailassets/icon-usp-1.png" alt="">
+            <span>Cicilan 0%</span>
+          </div>
+          <div class="gratis">
+            <img src="https://www.static-src.com/resources/images/mailassets/icon-usp-2.png" alt="">
+            <span>Gratis Pengiriman</span>
+          </div>
+          <div class="customer-care">
+            <img src="https://www.static-src.com/resources/images/mailassets/icon-usp-3.png" alt="">
+            <span>24/7 Customer Care</span>
+          </div>
+      </div>
+      <div class="download-android-apple m-b-20">
+        <div class="app-stores-block">
+            <div class="download-title m-b-15">
+              Download gratis aplikasi Blibli
+            </div>
+            <div class="links-to-store">
+              <div class="apple">
+                <a href="https://itunes.apple.com/id/app/blibli.com/id1034231507?l=id&mt=8" target='_blank'><img src="https://www.static-src.com/resources/images/assets/ic_app_store.jpg" alt=""/></a>
+              </div>
+              <div class="android">
+                <a href="https://play.google.com/store/apps/details?id=blibli.mobile.commerce" target='_blank'><img src="https://www.static-src.com/resources/images/assets/ic_google_play.png" alt=""/></a>
+              </div>
+            </div>
+        </div>
+        <div class="social-links-block">
+          <div class="social-link-title m-b-15">
+              ikuti Kami
+          </div>
+          <div class="social-links">
+            <img src="https://www.static-src.com/resources/images/mailassets/facebook.png" alt="">
+            <img src="https://www.static-src.com/resources/images/mailassets/googleplus.png" alt="">
+            <img src="https://www.static-src.com/resources/images/mailassets/twitter.png" alt="">
+            <img src="https://www.static-src.com/resources/images/mailassets/youtube.png" alt="">
+            <img src="https://www.static-src.com/resources/images/mailassets/instagram.png" alt="">
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="copy-right-block">
+      <div class="copy-right-text">
+        <span>Copyright © 2011-2017 Blibli.com. All Rights Reserved.</span>
+      </div>
+      <div class="external-links">
+        <a href="https://www.blibli.com/member/order" target='_blank'>Pesanan Saya</a>
+        <a href="https://www.blibli.com/panduan-belanja#hash-side-pembayaran" target='_blank'>Panduan Pembayaran</a>
+        <a href="https://www.blibli.com/pages/self-service" target='_blank'>Hubungi Kami</a>
+      </div>
+    </div>
+  </body>
+</html>
