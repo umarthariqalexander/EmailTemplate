@@ -256,6 +256,9 @@
         border-right: 3px solid #ccc;
         padding-right: 5px;
       }
+      .no-border-bottom{
+        border-bottom: none;
+      }
     </style>
   </head>
   <body>
@@ -267,14 +270,82 @@
 
         <!-- Header Part  -->
         <div class="page-header">
-          <h1 class="page-header-text black-font">Konfirmasi Pembelian</h1>
+          <h1 class="page-header-text black-font">Pembelin ${order.productType} Berhasil</h1>
         </div>
         <div class="header-desc">
-          <p class="header-desc-text">Silakan melakukan pembayaran untuk menghindari pembatalan transaksi secara otomatis.</p>
+          <p class="header-desc-text">Terima kasih telah membeli pulsa melalui Blibli.com.</p>
         </div>
 
         <!-- Info Box  -->
         <div class="info-box">
+        #if(${order.productType} == "Token PLN")
+            <div >  
+                  Kode Token
+            </div>
+            <div class="orange-font">
+              $!{order.tokenPln}
+            </div>    
+            <div class="black-font bold-font">
+              $!{order.productType} Rp $!{order.nominal}
+            </div>
+            <div>
+              Nomor pelanggan
+            </div>
+            <div>
+                // need to add here
+            </div>
+
+          #elseif(${order.productType} == "Game Voucher")
+            #if(${order.voucher_code} && ${order.voucher_code} != "")
+              <div class="black-font bold-font">
+                Kode Voucher
+              </div>
+              <div class="orange-font bold-font">
+                $!{order.voucher_code}
+              </div>
+            #end
+            #if(${order.voucher_password} && ${order.voucher_password} != "")
+              <div>Kata sandi</div>
+              <div>$!{order.voucher_password}</div>
+            #end
+               
+            #if(${order.serial_number} && ${order.serial_number} != "")
+              <div>Nomor seri</div>
+              <div>$!{order.serial_number}</div>
+            #end
+               
+            #if(${order.management_code} && ${order.management_code} != "")
+              <div>Kode manajemen</div>
+              <div>$!{order.management_code}</div>
+            #end
+               
+            #if(${order.pin} && ${order.pin} != "")
+              <div> Pin </div>
+              <div>$!{order.pin}</div>
+            #end   
+            <div>${order.operator}</div>
+            <div> Nominal Voucher</div>
+            <div>$!{order.itemName}</div>
+
+          #elseif(${order.productType} == "Water Bill")
+            <div class="bold-font black-font">$!{order.operator}</div>
+            <div>Nomor / Nama pelanggan</div>
+            <div class="bold-font black-font">$!{order.msisdn} / $!{order.fullName}</div>
+            <div>Nomor Referensi Biller / periode tagihan</div>
+          <div class="bold-font black-font">$!{order.billerReferenceNumber} / $!{order.startDate} - $!{order.endDate}</div>
+
+          #elseiF(${order.productType} == "Pulsa")
+            <div class="bold-font black-font">$!{order.productType} $!{order.networkOperator} Rp $!{order.nominal}</div>
+            <div>akan segera ditambahkan ke nomor</div>
+            <div class="bold-font black-font">$!{order.msisdn}</div>
+            <div>// need to confirm</div>
+             
+          #elseiF(${order.productType == "Pulsa Data"})
+            <div class="bold-font black-font">$!{order.productType} $!{order.networkOperator} Rp $!{order.itemName}</div>
+            <div>akan segera ditambahkan ke nomor</div>
+            <div class="bold-font black-font">$!{order.msisdn}</div>
+          #end
+ 
           <p>Status pesanan dapat dilihat di <a href="#" target='_blank'>Pesanan Saya</a></p>
         </div>
 
@@ -324,11 +395,40 @@
           <div class="each-row">
               <div class="product-info">
                 <div class="product-title bold m-b-15 black-font">
-                  Pulsa Telkomsel Rp 50,000
+                  #if(${order.productType} == "Token PLN")
+                    $!{order.productType} Rp $!{order.nominal}
+
+                  #elseif(${order.productType} == "Game Voucher")
+                    $!{order.operator}
+                    
+                  #elseif(${order.productType} == "Water Bill")
+                    $!{order.operator}
+
+                  #elseiF(${order.productType == "Pulsa"})
+                    $!{order.productType} $!{order.networkOperator} Rp $!{order.nominal}
+                    
+                  #elseiF(${order.productType == "Pulsa Data"})
+                    $!{order.productType} $!{order.networkOperator} Rp $!{order.itemName}
+                  #end
                 </div>
+
                 <div class="product-desc">
-                  Nomor tujuan 0823 1833 0555
-                  Masa Aktif 30 hari
+                  #if(${order.productType} == "Token PLN")
+                    Nomor pengisian $!{order.msisdn}
+                    // Confirm this also PT BETA GOLD - R1/900A
+
+                  #elseif(${order.productType} == "Pulsa")
+                    Nomor tujuan $!{order.msisdn}
+                    // need to confirm
+
+                  #elseif(${order.productType} == "Pulsa Data")
+                    Nomor tujuan $!{order.msisdn}
+                    //Need to confirm
+
+                  #elseif(${order.productType} == "Game Voucher")
+                    Nominal Voucher $!{order.itemName}
+                    Voucher Game
+                  #end                     
                 </div>
               </div>
               <div class="empty">
@@ -338,9 +438,57 @@
                   Rp
               </div>
               <div class="price">
-                  50,000
+                  <!-- #if(${order.productType} == "Token PLN")
+                  #elseiF(${order.productType} == "Pulsa")
+                  #elseiF(${order.productType} == "Pulsa Data")
+                  #elseiF(${order.productType} == "Game Voucher")
+                  #elseif(${order.productType} == "Water Bill") -->
+
+                  #if(${order.productType} == "Token PLN")
+                    $!{order.nominal}
+
+                  #elseiF(${order.productType} == "Pulsa")
+                    $!{order.nominal}
+
+                  #elseiF(${order.productType} == "Pulsa Data")
+                    $!{order.nominal}
+
+                  #elseiF(${order.productType} == "Game Voucher")
+                    $!{order.nominal}
+
               </div>
           </div>
+          #if(${order.productType} == "Water Bill")
+            #set($i = 1)
+              <div class="each-row no-border-bottom">
+                #foreach ($bill in ${order.bills})
+                  <div class="product-info">
+                    Tagihan $!{i} - $!{bill.month} $!{bill.year}
+                  </div>
+                  <div class="empty">
+                  </div>
+                  <div class="rp">
+                    Rp
+                  </div>
+                  <div class="price">
+                    Rp $!{bill.amount}    
+                  </div>  
+                  #set($i = $i+1)         
+              </div>
+              <div class="each-row no-border-bottom">                                                    
+                <div class="product-info">
+                    Biaya Admin 
+                  </div>
+                  <div class="empty">
+                  </div>
+                  <div class="rp">
+                    Rp
+                  </div>
+                  <div class="price">
+                    Rp $!{order.adminCharge}
+                  </div> 
+              </div>
+            #end 
           <div class="each-row">
               <div class="product-info">
               </div>
@@ -351,7 +499,7 @@
                   Rp
               </div>
               <div class="price">
-                  50,000
+                  $!{order.amount}
               </div>
           </div>
           <div class="each-row">
@@ -364,7 +512,7 @@
                   Rp
               </div>
               <div class="price">
-                  2,500
+                  Rp $!{order.potonganHarga}
               </div>
           </div>
           <div class="each-row border-black">
@@ -377,7 +525,7 @@
                   Rp
               </div>
               <div class="price orange-font">
-                  47,500
+                  $!{order.total}
               </div>
           </div>
         </div>
